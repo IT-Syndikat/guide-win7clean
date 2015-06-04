@@ -20,4 +20,177 @@ preferences of the author. Even though this manual is aimed to install Windows
 on a virtual machine, it can also be used for installations on a \emph{real}
 machine.
 
+\section{Crafting an Installation Image}
+\label{sec:install_image}
+
+For our clean installation we will create an installation image which already
+contains the service pack 1 and windows updates. Doing this will speedup the
+whole installation process.
+
+\subsection{Getting the base Installation Image / Medium}
+\label{ssec:win7_base_iso}
+
+As starting point a Windows 7 installation Image or Disk is required. It
+should not be that hard to find one. 64 bit Ultimate edition is recommended,
+although this should work for 32 bit and other editions too.
+
+The following process will require you to ether insert the disk in your disk
+drive or to mount (or extract) the obtained image file.
+
+\subsection{Acquiring Windows Updates}
+\label{ssec:get_win7_updates}
+
+Of course in order to integrate windows updates (and service packs) into your
+installation medium you first have to download these updates. A tool going by
+the name of ``Windows Updates Downloader''\footnotemark\ will take care of
+this. Download and launch this program.
+
+\footnotetext{\url{http://www.windowsupdatesdownloader.com}}
+
+You will have to enter a ``Update List'' to let the program know for what
+installation you want to get the updates. We will use two lists in this manual:
+
+\begin{itemize}
+    \item Windows 7 Service Pack 1\footnotemark
+    \item Windows 7 Updates Extra Updates ULZ\footnotemark
+\end{itemize}
+
+\footnotetext{listed here: \url{http://www.windowsupdatesdownloader.com/UpdateLists.aspx}}
+\footnotetext{
+    64 Bit: \url{https://www.raymond.cc/blog/download/did/3131/}\\
+    32 Bit: \url{https://www.raymond.cc/blog/download/did/3132/}
+}
+
+Go ahead and download \emph{all} updates offered by these two lists, you can
+adjust the target directory in the settings menu (may require a restart of the
+program).
+
+\subsection{Combine Base Installation and Updates}
+\label{ssec:ntlite}
+
+The are multiple ways of doing this, the one I commonly use is by using a tool
+called NTLite\footnotemark. This tool is free for personal use and allows you
+to create a new installation image based on an already existing one plus
+integrating downloaded windows updates.
+
+\footnotetext{\url{https://www.ntlite.com}}
+
+% TODO
+
+Although NTLite offers a lot of features even in the free version, I do not
+recommend altering the installation image in any way except for the update
+integration.
+
+At this point you may also include additional driver into the image if needed,
+NTLite supports this.
+
+\subsection{Installation Medium}
+\label{ssec:medium}
+
+The resulting installation image will be quite big compared to the base image,
+therefore you should choose to create a bootable USB drive if you plan to
+install Windows 7 on a dedicated computer. A virtual machine will boot the
+image just fine.
+
+\subsubsection{Setup USB drive}
+
+\begin{enumerate}
+    \item grab a USB drive which fits your installation image
+    \item backup the data on the USB drive
+    \item format the USB drive with NTFS (``quick format'' is okay)
+    \item mount / extract your newly crafted installation image
+    \item run \texttt{DISKPART} from a command prompt
+    \item use \texttt{LIST VOL} to list attached volumes
+    \item use \texttt{SELECT VOL} to select the USB drive
+    \item use \texttt{ACTIVE} to mark the volume as active
+    \item use \texttt{EXIT} to quit \texttt{DISKPART}
+    \item run \texttt{BOOTSECT /NT60 x:} located inside the \texttt{BOOT}
+        folder on your installation image where \texttt{x:} is the drive letter
+        of the USB drive.
+    \item lastly copy \emph{all} data from the installation image to the USB
+        drives' root folder
+\end{enumerate}
+
+Your USB drive should now be bootable and can be used to run your windows 7
+installation image.
+
+\section{Installation Process}
+\label{sec:installation}
+
+This section will go through the base installation of Windows 7. Here we will
+use a virtual machine utilising VirtualBox\footnotemark.
+
+\footnotetext{\url{http://virtualbox.org}}
+
+\subsection{Setting up the Virtual Machine}
+\label{ssec:virtual_box}
+
+% TODO
+
+\subsection{Base Installation}
+\label{ssec:base_install}
+
+\subsection{Additional Windows Updates}
+\label{ssec:updates_post_install}
+
+Install \emph{all} updates available through ``Windows Updates'', reboot after
+the update process. Rinse and repeat until no more updates are available.
+
+\textit{You can skip language packs and updates related to ``Windows Defender''
+and ``Microsoft Security Essentials'' if you want.}
+
+\section{Fine Tuning}
+\label{sec:fine_tuning}
+
+This will probably the most important part of the whole setup process. In here
+we will fine tune various windows settings to fit a power users needs. Again
+these are my personal preferences, adjust things to your needs.
+
+\subsection{Disabling Services}
+\label{ssec:services}
+
+\section{Additional Software}
+\label{sec:software}
+
+Of course you can install the software you need the way you want to. But there
+are 2 ways I recommend for installing basic components.
+
+\begin{itemize}
+    \item Ninte\footnotemark
+    \item chocolatey\footnotemark
+\end{itemize}
+
+\footnotetext{\url{https://ninite.com}}
+\footnotetext{\url{https://chocolatey.org}}
+
+My basic components include:
+
+\begin{itemize}
+    \item 7-Zip
+    \item Firefox
+    \item Notepad++
+    \item SysinternalsSuit
+    \item VLC
+    \item WinDirStats
+    \item qBittorrent
+\end{itemize}
+
+\section{Maintenance}
+\label{sec:maintenance}
+
+Lastly, \textbf{always keep your system clean!} If you are unsure what a
+software will do to your setup, run it inside a virtual machine and take
+advantage of snapshots.
+
+In addition you may use the ``Disk Cleanup'' assistant Windows brings along to
+remove leftover data from temporary files or \textbf{Windows Updates}.
+``WinDirStats'' shows you a layout of all files located on a disk sorted by
+filesize. One could also install ``CCleaner'' to keep application data and
+registry clean.
+
+\textit{I do not recommend installation updates automatically, to this manual
+whenever time allows. Include optional updates but always be aware that Windows
+Updates may include stuff you do not want, like ``Bing Desktop'', ``Skype'',
+``Silverlight'', \ldots}
+
 \end{document}
