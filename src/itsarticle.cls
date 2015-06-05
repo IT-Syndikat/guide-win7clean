@@ -77,8 +77,14 @@
         text-rm=\sffamily,
     }
 
+% keys and menus
+
+\RequirePackage[os=win]{menukeys}
+    \renewmenumacro{\directory}{pathswithfolder}
+
 % graphics
 
+\RequirePackage{tikz}
 \RequirePackage{graphicx}
     \graphicspath{{gfx/}}
 
