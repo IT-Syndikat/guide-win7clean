@@ -1,5 +1,5 @@
 TEX      = pdflatex
-TEXFLAGS = --shell-escape --file-line-error --halt-on-error
+TEXFLAGS = -shell-escape -file-line-error -halt-on-error
 BIB      = bibtex
 BIBFLAGS = -terse
 OUT      = manual.pdf

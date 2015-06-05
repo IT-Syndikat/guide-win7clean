@@ -3,7 +3,21 @@
 \NeedsTeXFormat{LaTeX2e}
 
 \ProvidesClass{itsarticle}[2015/06/02 ITS Article Class]
-\LoadClass[a4paper,parskip=half,titlepage]{scrartcl}
+\LoadClass[10pt,a4paper,parskip=half,titlepage]{scrartcl}
+
+% fonts
+
+% \RequirePackage[scaled]{helvet}
+\RequirePackage{DejaVuSans}
+    \let\familydefault\sfdefault
+
+\RequirePackage[defaultmono,scale=0.8]{droidmono}
+
+\RequirePackage{sansmath}
+    \sansmath
+
+\newcommand*{\@uibkLarge}{\sffamily\mdseries\upshape\fontsize{12}{12}\selectfont}
+\newcommand*{\@uibkLARGE}{\sffamily\mdseries\upshape\fontsize{16}{16}\selectfont}
 
 % fixes
 
@@ -71,10 +85,8 @@
 
 \RequirePackage[binary-units,per-mode=symbol]{siunitx}
     \sisetup{
-        detect-family,
-        detect-weight,
-        math-rm=\mathsf,
-        text-rm=\sffamily,
+        detect-all,
+        text-rm=\fdmfamily,
     }
 
 % keys and menus
@@ -156,19 +168,6 @@
         framesep=2mm,
         linenos=true,
     }
-
-% fonts
-
-\RequirePackage[scaled]{helvet}
-    \let\familydefault\sfdefault
-
-\RequirePackage[defaultmono,scale=0.8]{droidmono}
-
-\RequirePackage{sansmath}
-    \sansmath
-
-\newcommand*{\@uibkLarge}{\sffamily\mdseries\upshape\fontsize{12}{12}\selectfont}
-\newcommand*{\@uibkLARGE}{\sffamily\mdseries\upshape\fontsize{16}{16}\selectfont}
 
 % tables
 
