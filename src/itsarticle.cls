@@ -80,7 +80,8 @@
 % keys and menus
 
 \RequirePackage[os=win]{menukeys}
-    \renewmenumacro{\directory}{pathswithfolder}
+    \changemenuelement{hyphenatepathswithfolder}{sep}{/}
+    \renewmenumacro{\directory}{hyphenatepathswithfolder}
 
 % graphics
 

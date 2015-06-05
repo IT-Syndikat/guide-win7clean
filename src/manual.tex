@@ -61,9 +61,8 @@ installation you want to get the updates. We will use two lists in this manual:
     32 Bit: \url{https://www.raymond.cc/blog/download/did/3132/}
 }
 
-Go ahead and download \emph{all} updates offered by these two lists, you can
-adjust the target directory in the settings menu (may require a restart of the
-program).
+Go ahead and download \emph{all} updates offered by these two lists to a
+dedicated download folder.
 
 \subsection{Combine Base Installation and Updates}
 \label{ssec:ntlite}
@@ -75,7 +74,10 @@ integrating downloaded windows updates.
 
 \footnotetext{\url{https://www.ntlite.com}}
 
-% TODO
+Before starting the repackaging process you may want to set the programs temp
+folder to some place offering enough space. You can find the corresponding
+option in \menu{File > Settings > Temporary files directory}. Restart NTLite
+after changing the temp directory.
 
 Although NTLite offers a lot of features even in the free version, I do not
 recommend altering the installation image in any way except for the update
@@ -83,6 +85,14 @@ integration.
 
 At this point you may also include additional driver into the image if needed,
 NTLite supports this.
+
+Extract the original Windows 7 installation image so NTLite can write to it.
+After adding the extracted file location in NTLite you should be able to select
+and load the desired edition.
+
+% TODO
+After adding the mounted / extracted image in NTLite the contained editions
+should be listed under ``Image History''.
 
 \subsection{Installation Medium}
 \label{ssec:medium}
@@ -125,22 +135,100 @@ use a virtual machine utilising VirtualBox\footnotemark.
 \subsection{Setting up the Virtual Machine}
 \label{ssec:virtual_box}
 
-% TODO
+Fire up VirtualBox and create a new VM, I usually do following adjustments:
+
+\begin{itemize}
+    \item a minimum of \SI{1024}{\mega\byte} of memory
+    \item a minimum of \SI{50}{\giga\byte} of hard drive storage
+    \item a minimum of \SI{64}{\mega\byte} of video memory
+    \item enable 3D acceleration
+    \item enable 2D video acceleration
+    \item set network adapter to ``bridged'' if ``NAT'' results in connection
+        problems
+\end{itemize}
+
+Do not forget to insert your installation image into the virtual drive.
 
 \subsection{Base Installation}
 \label{ssec:base_install}
 
+\begin{enumerate}
+    \item leave language and time format on ``English (United States)'' for now
+    \item you may change the keyboard layout if you are not comfortable with US
+        keyboard
+    \item select ``Windows 7 Ultimate'' when prompted
+    \item click ``Custom (advanced)'' on the next screen
+    \item select the desired disk for your system
+\end{enumerate}
+
+Next click through the setup assistant:
+
+\begin{enumerate}
+    \item click skip on the ``Windows product key'' page
+    \item click ``Ask me later'' on the next screen
+    \item click ``Public network'' on the ``current location'' page
+\end{enumerate}
+
+After your installation booted for the first time, add / remove the following
+features:
+
+\menu{Control Panel > Programs and Features > Turn Windows features on or off}
+
+\begin{itemize}
+    \item uncheck ``Games''
+    \item uncheck ``Internet Explorer''
+    \item uncheck ``Media Features''
+    \item uncheck ``Tablet PC Components''
+    \item check ``Telnet Client''
+    \item uncheck ``Windows Gadget Platform''
+\end{itemize}
+
+\textit{If you use Internet Explorer to download additional software (see
+\cref{sec:software}) do not uncheck the corresponding bullet.}
+
+Click ``OK'' and reboot.
+
 \subsection{Additional Windows Updates}
 \label{ssec:updates_post_install}
 
-Install \emph{all} updates available through Windows Updates, reboot after the
-update process. Rinse and repeat until no more updates are available.
+Install \emph{all} updates available next through Windows Updates, reboot after
+the update process. Rinse and repeat until no more updates are available.
 
 \textit{You can skip language packs and updates related to Windows Defender and
 Microsoft Security Essentials if you want.}
 
+\section{Drivers}
+\label{sec:drivers}
+
+Install all drivers required by your system, most of them should have been
+downloaded by Windows Updates automatically. Check the device manager (see
+\cref{ssec:shortcuts}) to see if there are still components not recognized by
+your system.
+
 \section{Fine Tuning}
 \label{sec:fine_tuning}
+
+\subsection{Shortcuts}
+\label{ssec:shortcuts}
+
+Following shortcuts may help you access settings more quickly:
+
+\begin{description}
+    \item[Control panel] \hfill \\
+        hit \keys{Win + r} enter ``control''
+
+    \item[Services] \hfill \\
+        hit \keys{Win + r} enter ``services.msc''
+
+    \item[Computer Management] \hfill \\
+        hit \keys{Win + r} enter ``compmgmt.msc''
+
+    \item[Advanced system settings] \hfill \\
+        hit \keys{Win + pause} select ``Advanced system settings''
+
+    \item[Device Manager] \hfill \\
+        hit \keys{Win + r} enter ``devmgmt.msc''
+\end{description}
 
 This will probably the most important part of the whole setup process. In here
 we will fine tune various windows settings to fit a power users needs. Again
@@ -148,6 +236,11 @@ these are my personal preferences, adjust things to your needs.
 
 \subsection{Disabling Services}
 \label{ssec:services}
+
+Disabling certain system services may speedup your system significantly but may
+also render some features useless, these are my preferences:
+
+% TODO
 
 \section{Additional Software}
 \label{sec:software}
@@ -174,6 +267,16 @@ My basic components include:
     \item WinDirStats
     \item qBittorrent
 \end{itemize}
+
+\section{Activation}
+\label{sec:activation}
+
+Active Windows 7 now using your favorite method of activation.
+
+\section{VirtualBox Guest Additions}
+\label{sec:guest_additions}
+
+Do not forget to install guest additions if you are using a virtual machine.
 
 \section{Maintenance}
 \label{sec:maintenance}
