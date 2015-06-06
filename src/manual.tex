@@ -28,7 +28,7 @@ contains the service pack 1 and windows updates. Doing this will speedup the
 whole installation process.
 
 \subsection{Getting the base Installation Image / Medium}
-\label{ssec:win7_base_iso}
+\label{sub:win7_base_iso}
 
 As starting point a Windows 7 installation Image or Disk is required. It
 should not be that hard to find one. 64 bit Ultimate edition is recommended,
@@ -38,7 +38,7 @@ The following process will require you to ether insert the disk in your disk
 drive or to mount (or extract) the obtained image file.
 
 \subsection{Acquiring Windows Updates}
-\label{ssec:get_win7_updates}
+\label{sub:get_win7_updates}
 
 Of course in order to integrate windows updates (and service packs) into your
 installation medium you first have to download these updates. A tool going by
@@ -65,7 +65,7 @@ Go ahead and download \emph{all} updates offered by these two lists to a
 dedicated download folder.
 
 \subsection{Combine Base Installation and Updates}
-\label{ssec:ntlite}
+\label{sub:ntlite}
 
 The are multiple ways of doing this, the one I commonly use is by using a tool
 called NTLite\footnotemark. This tool is free for personal use and allows you
@@ -95,7 +95,7 @@ After adding the mounted / extracted image in NTLite the contained editions
 should be listed under ``Image History''.
 
 \subsection{Installation Medium}
-\label{ssec:medium}
+\label{sub:medium}
 
 The resulting installation image will be quite big compared to the base image,
 therefore you should choose to create a bootable USB drive if you plan to
@@ -133,7 +133,7 @@ use a virtual machine utilising VirtualBox\footnotemark.
 \footnotetext{\url{http://virtualbox.org}}
 
 \subsection{Setting up the Virtual Machine}
-\label{ssec:virtual_box}
+\label{sub:virtual_box}
 
 Fire up VirtualBox and create a new VM, I usually do following adjustments:
 
@@ -150,7 +150,7 @@ Fire up VirtualBox and create a new VM, I usually do following adjustments:
 Do not forget to insert your installation image into the virtual drive.
 
 \subsection{Base Installation}
-\label{ssec:base_install}
+\label{sub:base_install}
 
 \begin{enumerate}
     \item leave language and time format on ``English (United States)'' for now
@@ -174,6 +174,9 @@ features:
 
 \menu{Control Panel > Programs and Features > Turn Windows features on or off}
 
+Note that I always refer to bullet names under ``Small icons'' in the control
+panel.
+
 \begin{itemize}
     \item uncheck ``Games''
     \item uncheck ``Internet Explorer''
@@ -184,14 +187,17 @@ features:
 \end{itemize}
 
 \textit{If you use Internet Explorer to download additional software (see
-\cref{sec:software}) do not uncheck the corresponding bullet.}
+\cref{sec:software}) do not uncheck the corresponding entry.}
 
-Click ``OK'' and reboot.
+Click ``Restart now'' when prompted.
 
 \subsection{Additional Windows Updates}
-\label{ssec:updates_post_install}
+\label{sub:updates_post_install}
 
-Install \emph{all} updates available next through Windows Updates, reboot after
+Windows Updates can also be access via \keys{Win + r} entering ``control
+update''. The first time accessing windows updates, you will be asked to choose
+your settings. Select ``Never check for updates'' after clicking ``Let me
+choose my settings''. Install \emph{all} updates available next, reboot after
 the update process. Rinse and repeat until no more updates are available.
 
 \textit{You can skip language packs and updates related to Windows Defender and
@@ -202,14 +208,18 @@ Microsoft Security Essentials if you want.}
 
 Install all drivers required by your system, most of them should have been
 downloaded by Windows Updates automatically. Check the device manager (see
-\cref{ssec:shortcuts}) to see if there are still components not recognized by
+\cref{sub:shortcuts}) to see if there are still components not recognized by
 your system.
 
 \section{Fine Tuning}
 \label{sec:fine_tuning}
 
+This will probably the most important part of the whole setup process. In here
+we will fine tune various windows settings to fit a power users needs. Again
+these are my personal preferences, adjust things to your needs.
+
 \subsection{Shortcuts}
-\label{ssec:shortcuts}
+\label{sub:shortcuts}
 
 Following shortcuts may help you access settings more quickly:
 
@@ -230,17 +240,193 @@ Following shortcuts may help you access settings more quickly:
         hit \keys{Win + r} enter ``devmgmt.msc''
 \end{description}
 
-This will probably the most important part of the whole setup process. In here
-we will fine tune various windows settings to fit a power users needs. Again
-these are my personal preferences, adjust things to your needs.
+\subsection{Visuals}
+\label{sub:visuals}
+
+Switch theme to classic and disable visual effects to achieve better
+performance.
+
+\begin{itemize}
+    \item \menu{rightclick on desktop > Personalize > Windows Classic}
+    \item \menu{Advanced system settings > Advanced > Performance > Settings...
+        > Adjust for best performance}
+\end{itemize}
+
+\subsection{Disable Page file}
+\label{sub:disable_page_file}
+
+\begin{enumerate}
+    \item \menu{Advanced system settings > Advanced > Performance > Settings...
+        > Advanced > Virtual memory > Change...}
+    \item uncheck the first checkbox
+    \item go through all drives and set ``No page file''
+\end{enumerate}
+
+\subsection{No Automatic Restart on BSOD}
+\label{sub:no_automatic_restart_on_bsod}
+
+\begin{enumerate}
+    \item \menu{Advanced system settings > Advanced > Startup and Recovery >
+        Settings...}
+    \item uncheck ``Automatic restart''
+\end{enumerate}
+
+\subsection{Disable System Restore}
+\label{sub:disable_system_restore}
+
+\begin{enumerate}
+    \item \menu{Advanced system settings > System Protection > Configure...}
+    \item select ``Turn off system protection''
+    \item click ``Delete'' before closing this window
+\end{enumerate}
+
+\subsection{Disable Remote Assistance}
+\label{sub:disable_remote_assistance}
+
+\begin{enumerate}
+    \item \menu{Advanced system settings > Remote}
+    \item uncheck ``Allow Remote Assistance...''
+\end{enumerate}
+
+\subsection{Disable Action Center Stuff}
+\label{sub:disable_action_center_stuff}
+
+\begin{enumerate}
+    \item \menu{Control Panel > Action Center > Change Action Center settings}
+    \item uncheck everything
+\end{enumerate}
+
+\subsection{Disable AutoPlay}
+\label{sub:disable_autoplay}
+
+\begin{enumerate}
+    \item \menu{Control Panel > AutoPlay}
+    \item uncheck the first checkbox
+\end{enumerate}
+
+\subsection{Show Hidden Files}
+\label{sub:show_hidden_files}
+
+\begin{enumerate}
+    \item \menu{Control Panel > Folder Options > View}
+    \item select ``Show hidden files, folder and drives''
+    \item uncheck ``Hide empty drives in the Computer folder''
+    \item uncheck ``Hide extensions for known file types''
+\end{enumerate}
+
+\subsection{Disable Indexing}
+\label{sub:disable_indexing}
+
+\begin{enumerate}
+    \item \menu{Control Panel > Indexing Options > Modify}
+    \item click ``Show all locations''
+    \item select an entry in the lower box
+    \item uncheck the corresponding checkbox in the upper box
+    \item repeat for all entries
+\end{enumerate}
+
+\subsection{Fix Network Settings}
+\label{sub:fix_network_settings}
+
+\begin{enumerate}
+    \item \menu{Control Panel > Network and Sharing Center > Change advanced
+        sharing settings > Public}
+    \item select ``Turn on network discovery''
+    \item select ``Turn on file and printer sharing''
+    \item select ``Turn off Public folder sharing''
+    \item select ``Use 128-bit encryption ...''
+    \item select ``Turn on password protected sharing''
+\end{enumerate}
+
+\begin{enumerate}
+    \item \menu{Control Panel > Network and Sharing Center > Public network}
+    \item check ``Treat all future networks ...''
+    \item click ``Public network''
+\end{enumerate}
+
+\subsection{Set Power Options}
+\label{sub:set_power_options}
+
+\begin{enumerate}
+    \item \menu{Control Panel > Power Options}
+    \item select ``High performance''
+\end{enumerate}
+
+\subsection{Disable Offline Files}
+\label{sub:disable_offline_files}
+
+\begin{enumerate}
+    \item \menu{Control Panel > Sync Center > Manage offline files}
+    \item click ``Disable offline files''
+\end{enumerate}
+
+\subsection{Disable UAC}
+\label{sub:disable_uac}
+
+\begin{enumerate}
+    \item \menu{Control Panel > User Accounts > Change User Account Control
+        settings}
+    \item select ``Never notify''
+\end{enumerate}
+
+\subsection{Setup Autologin}
+\label{sub:setup_autologin}
+
+\begin{enumerate}
+    \item hit \keys{Win + r} enter ``control userpasswords2''
+    \item uncheck the first checkbox
+    \item click ``OK''
+    \item enter your user's password in the provided fields
+\end{enumerate}
+
+\subsection{Show System Information on Boot}
+\label{sub:show_system_information_on_boot}
+
+\begin{enumerate}
+    \item hit \keys{Win + r} enter ``msconfig''
+    \item under ``Boot''
+    \item check ``OS Boot information''
+\end{enumerate}
 
 \subsection{Disabling Services}
-\label{ssec:services}
+\label{sub:services}
 
-Disabling certain system services may speedup your system significantly but may
-also render some features useless, these are my preferences:
+Some of the tweaks mentioned previously can also be achieved by disabling
+certain system services. Disabling certain system services may speedup your
+system significantly but may also render some features useless, these are my
+preferences:
 
-% TODO
+\begin{itemize}
+    \item disable ``Microsoft .NET Framework NGEN ...''
+    \item disable ``Power''
+    \item disable ``Security Center''
+    \item disable ``Volume Shadow Copy''
+    \item disable ``Windows Defender''
+    \item disable ``Disk Defragmenter''
+\end{itemize}
+
+Additional settings which may come in handy:
+
+\begin{itemize}
+    \item disable ``Adaptive Brightness''
+    \item disable ``BitLocker Drive Encryption Service''
+    \item disable ``Block Level Backup Engine Service''
+    \item disable ``Bluetooth Support Service''
+    \item disable ``Encrypted File System''
+    \item disable ``Fax''
+    \item disable ``HomeGroup Listener''
+    \item disable ``HomeGroup Provider''
+    \item disable ``Microsoft Software Shadow Copy Provider''
+    \item disable ``Offline Files''
+    \item disable ``Parental Controls''
+    \item disable ``Smart Card''
+    \item disable ``Smart Card Removal Policy''
+    \item disable ``Tablet PC Input Service''
+    \item disable ``Windows Backup''
+    \item disable ``Windows Biometric Service''
+    \item disable ``Windows Connect Now''
+    \item try disabling ``Superfetch'' to gain better disk performance
+\end{itemize}
 
 \section{Additional Software}
 \label{sec:software}
@@ -271,7 +457,7 @@ My basic components include:
 \section{Activation}
 \label{sec:activation}
 
-Active Windows 7 now using your favorite method of activation.
+Activate Windows 7 now using your favorite method.
 
 \section{VirtualBox Guest Additions}
 \label{sec:guest_additions}
