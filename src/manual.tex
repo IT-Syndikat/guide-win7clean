@@ -14,11 +14,10 @@
 \label{sec:abstract}
 
 This manual will guide you through a clean Windows 7 installation process. It
-will also focus on creation of the installation medium as well as installing
+will also focus on the creation of an installation medium as well as installing
 common software. Most recommendations described in this manual are personal
 preferences of the author. Even though this manual is aimed to install Windows
-on a virtual machine, it can also be used for installations on a \emph{real}
-machine.
+on a virtual machine, it can also be used for \emph{real} machines.
 
 \tableofcontents
 
@@ -27,9 +26,9 @@ machine.
 \section{Crafting an Installation Image}
 \label{sec:install_image}
 
-For our clean installation we will create an installation image which already
-contains the service pack 1 and windows updates. Doing this will speedup the
-whole installation process.
+For this clean installation you will create an installation image which already
+contains service pack 1 and windows updates. Doing this will speedup the whole
+installation process.
 
 \subsection{Getting the base Installation Image / Medium}
 \label{sub:win7_base_iso}
@@ -38,7 +37,7 @@ As starting point a Windows 7 installation Image or Disk is required. It
 should not be that hard to find one. 64 bit Ultimate edition is recommended,
 although this should work for 32 bit and other editions too.
 
-The following process will require you to ether insert the disk in your disk
+The following process will require you to either insert the disk in your disk
 drive or to mount (or extract) the obtained image file.
 
 \subsection{Acquiring Windows Updates}
@@ -52,7 +51,7 @@ Download and launch this program.
 \footnotetext{\url{http://www.windowsupdatesdownloader.com}}
 
 You will have to enter a ``Update List'' to let the program know for what
-installation you want to get the updates. We will use two lists in this manual:
+installation you want to get the updates. Use these two lists:
 
 \begin{itemize}
     \item Windows 7 Service Pack 1\footnotemark
@@ -65,15 +64,15 @@ installation you want to get the updates. We will use two lists in this manual:
     32 Bit: \url{https://www.raymond.cc/blog/download/did/3132/}
 }
 
-Go ahead and download \emph{all} updates offered by these two lists to a
+Go ahead and download \underline{all} updates offered by these two lists to a
 dedicated download folder.
 
 \subsection{Combine Base Installation and Updates}
 \label{sub:ntlite}
 
 The are multiple ways of doing this, the one I commonly use is by using a tool
-called NTLite\footnotemark. This tool is free for personal use and allows you
-to create a new installation image based on an already existing one plus
+called NTLite\footnotemark. This tool is free (of charge) for personal use and
+allows you to create a new installation image based on an existing one plus
 integrating downloaded windows updates.
 
 \footnotetext{\url{https://www.ntlite.com}}
@@ -94,7 +93,7 @@ using \menu{Updates > Update queue > Add > Folder and subfolders found
 packages}. Repeat the same process for drivers under the \menu{Drivers} tab.
 
 Check \menu{Apply > Post-process automation > Create ISO image} and click the
-``Start'' button.
+\menu{Apply > Start} button.
 
 \subsection{Installation Medium}
 \label{sub:medium}
