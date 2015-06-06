@@ -1,8 +1,9 @@
-TEX      = pdflatex
-TEXFLAGS = -shell-escape -file-line-error -halt-on-error
-BIB      = bibtex
-BIBFLAGS = -terse
-OUT      = manual.pdf
+TEX       = pdflatex
+TEXFLAGS  = -shell-escape -file-line-error -halt-on-error
+TEXMFHOME ="./texmf"
+BIB       = bibtex
+BIBFLAGS  = -terse
+OUT       = manual.pdf
 
 .PHONY: all clean
 
@@ -13,8 +14,8 @@ clean:
 		*.toc *.thm *.pyg
 
 %.pdf: %.tex
-	$(TEX) $(TEXFLAGS) $<
-	$(TEX) $(TEXFLAGS) $<
+	TEXMFHOME=$(TEXMFHOME) $(TEX) $(TEXFLAGS) $<
+	TEXMFHOME=$(TEXMFHOME) $(TEX) $(TEXFLAGS) $<
 
 %.bbl %.blg: %.bib %.aux
 	$(BIB) $(BIBFLAGS) $*

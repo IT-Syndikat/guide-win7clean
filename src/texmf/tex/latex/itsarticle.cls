@@ -5,20 +5,6 @@
 \ProvidesClass{itsarticle}[2015/06/02 ITS Article Class]
 \LoadClass[10pt,a4paper,parskip=half,titlepage]{scrartcl}
 
-% fonts
-
-% \RequirePackage[scaled]{helvet}
-\RequirePackage{DejaVuSans}
-    \let\familydefault\sfdefault
-
-\RequirePackage[defaultmono,scale=0.8]{droidmono}
-
-\RequirePackage{sansmath}
-    \sansmath
-
-\newcommand*{\@uibkLarge}{\sffamily\mdseries\upshape\fontsize{12}{12}\selectfont}
-\newcommand*{\@uibkLARGE}{\sffamily\mdseries\upshape\fontsize{16}{16}\selectfont}
-
 % fixes
 
 \RequirePackage[T1]{fontenc}
@@ -27,6 +13,23 @@
 \RequirePackage{lmodern}
 \RequirePackage{scrhack}
 \RequirePackage{textcomp}
+
+% normal fonts
+\RequirePackage{ubuntu}
+    \renewcommand{\sfdefault}{ubuntulight}
+    \let\familydefault\sfdefault
+
+% tt font
+\RequirePackage[defaultmono,scale=0.8]{droidmono}
+
+% math font
+\SetSymbolFont{operators}{normal}{OT1}{cmbr}{m}{n}
+\SetSymbolFont{letters}{normal}{OML}{cmbrm}{m}{it}
+\SetSymbolFont{symbols}{normal}{OMS}{cmbrs}{m}{n}
+\SetMathAlphabet{\mathit}{normal}{OT1}{cmbr}{m}{sl}
+\SetMathAlphabet{\mathbf}{normal}{OT1}{cmbr}{bx}{n}
+\SetMathAlphabet{\mathtt}{normal}{OT1}{cmtl}{m}{n}
+\SetSymbolFont{largesymbols}{normal}{OMX}{iwona}{m}{n}
 
 % page
 
@@ -84,10 +87,7 @@
 % SI units
 
 \RequirePackage[binary-units,per-mode=symbol]{siunitx}
-    \sisetup{
-        detect-all,
-        text-rm=\fdmfamily,
-    }
+    \sisetup{detect-all}
 
 % keys and menus
 
