@@ -20,6 +20,10 @@ preferences of the author. Even though this manual is aimed to install Windows
 on a virtual machine, it can also be used for installations on a \emph{real}
 machine.
 
+\tableofcontents
+
+\newpage
+
 \section{Crafting an Installation Image}
 \label{sec:install_image}
 
@@ -80,19 +84,17 @@ option in \menu{File > Settings > Temporary files directory}. Restart NTLite
 after changing the temp directory.
 
 Although NTLite offers a lot of features even in the free version, I do not
-recommend altering the installation image in any way except for the update
-integration.
-
-At this point you may also include additional driver into the image if needed,
-NTLite supports this.
+recommend altering the installation image in any way except for integrating
+windows updates and additional drivers.
 
 Extract the original Windows 7 installation image so NTLite can write to it.
 After adding the extracted file location in NTLite you should be able to select
-and load the desired edition.
+and load the desired edition. After loading select the windows update folder
+using \menu{Updates > Update queue > Add > Folder and subfolders found
+packages}. Repeat the same process for drivers under the \menu{Drivers} tab.
 
-% TODO
-After adding the mounted / extracted image in NTLite the contained editions
-should be listed under ``Image History''.
+Check \menu{Apply > Post-process automation > Create ISO image} and click the
+``Start'' button.
 
 \subsection{Installation Medium}
 \label{sub:medium}
