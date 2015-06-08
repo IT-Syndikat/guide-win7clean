@@ -33,25 +33,25 @@ installation process.
 \subsection{Getting the base Installation Image / Medium}
 \label{sub:win7_base_iso}
 
-As starting point a Windows 7 installation Image or Disk is required. It
+As starting point a Windows 7 installation image or disk is required. It
 should not be that hard to find one. 64 bit Ultimate edition is recommended,
-although this should work for 32 bit and other editions too.
+although this manual should work for 32 bit and other editions too.
 
-The following process will require you to either insert the disk in your disk
-drive or to mount (or extract) the obtained image file.
+The following process will require you to insert or mount the disk in order to
+extract the containing files.
 
 \subsection{Acquiring Windows Updates}
 \label{sub:get_win7_updates}
 
 Of course in order to integrate windows updates (and service packs) into your
-installation medium you first have to download these updates. A tool going by
+installation medium you have to download these updates first. A tool going by
 the name of Windows Updates Downloader\footnotemark\ will take care of this.
 Download and launch this program.
 
 \footnotetext{\url{http://www.windowsupdatesdownloader.com}}
 
-You will have to enter a ``Update List'' to let the program know for what
-installation you want to get the updates. Use these two lists:
+To let the program know for what edition you want to get updates for you have
+to provide one or more ``Updated Lists''. Use these two lists:
 
 \begin{itemize}
     \item Windows 7 Service Pack 1\footnotemark
@@ -73,18 +73,18 @@ dedicated download folder.
 There are multiple ways of doing this, the one I commonly use is by using a
 tool called NTLite\footnotemark. This tool is free (of charge) for personal use
 and allows you to create a new installation image based on an existing one plus
-integrating downloaded windows updates.
+integrating windows updates and service packs.
 
 \footnotetext{\url{https://www.ntlite.com}}
 
 Before starting the repackaging process you may want to set the programs temp
-folder to some place offering enough space. You can find the corresponding
+folder to some place offering enough disk space. You can find the corresponding
 option in \menu{File > Settings > Temporary files directory}. Restart NTLite
 after changing the temp directory.
 
 Although NTLite offers a lot of features even in the free version, I do not
 recommend altering the installation image in any way except for integrating
-windows updates and additional drivers.
+windows updates, service packs and additional drivers.
 
 Extract the original Windows 7 installation image so NTLite can write to it.
 After adding the extracted file location in NTLite you should be able to select
@@ -98,9 +98,9 @@ Check \menu{Apply > Post-process automation > Create ISO image} and click the
 \subsection{Installation Medium}
 \label{sub:medium}
 
-The resulting installation image will be quite big compared to the base image,
-therefore you should choose to create a bootable USB drive if you plan to
-install Windows 7 on a dedicated computer. A virtual machine will boot the
+The resulting installation image will be a lot bigger than the original base
+image, therefore you should choose to create a bootable USB drive if you plan
+to install Windows 7 on a dedicated computer. A virtual machine will boot the
 image just fine.
 
 \subsubsection{Setup USB drive}
@@ -136,7 +136,7 @@ use a virtual machine utilising VirtualBox\footnotemark.
 \subsection{Setting up the Virtual Machine}
 \label{sub:virtual_box}
 
-Fire up VirtualBox and create a new VM, I usually do following adjustments:
+Fire up VirtualBox and create a new VM, making the following adjustments:
 
 \begin{itemize}
     \item a minimum of \SI{1024}{\mega\byte} of memory
@@ -146,9 +146,8 @@ Fire up VirtualBox and create a new VM, I usually do following adjustments:
     \item enable 2D video acceleration
     \item set network adapter to ``bridged'' if ``NAT'' results in connection
         problems
+    \item insert the installation image into the virtual disk drive
 \end{itemize}
-
-Do not forget to insert your installation image into the virtual drive.
 
 \subsection{Base Installation}
 \label{sub:base_install}
@@ -175,8 +174,8 @@ features:
 
 \menu{Control Panel > Programs and Features > Turn Windows features on or off}
 
-Note that I always refer to bullet names under ``Small icons'' in the control
-panel.
+Note that this manual always refers to bullet names under ``Small icons'' in
+the control panel.
 
 \begin{itemize}
     \item uncheck ``Games''
@@ -198,11 +197,13 @@ Click ``Restart now'' when prompted.
 Windows Updates can also be access via \keys{Win + r} entering ``control
 update''. The first time accessing windows updates, you will be asked to choose
 your settings. Select ``Never check for updates'' after clicking ``Let me
-choose my settings''. Install \emph{all} updates available next, reboot after
-the update process. Rinse and repeat until no more updates are available.
+choose my settings''. Install \underline{all (including optional)} updates
+available next, reboot after the update process has completed. Rinse and repeat
+until no more updates are available.
 
-\textit{You can skip language packs and updates related to Windows Defender and
-Microsoft Security Essentials if you want.}
+\textit{You can skip language packs and updates related to Windows Defender,
+Microsoft Security Essentials, Bing, Silverlight, Skype and similar crap if you
+want.}
 
 \section{Drivers}
 \label{sec:drivers}
@@ -394,7 +395,7 @@ performance.
 
 Some of the tweaks mentioned previously can also be achieved by disabling
 certain system services. Disabling certain system services may speedup your
-system significantly but may also render some features useless, these are my
+system significantly but may also render some features unusable, these are my
 preferences:
 
 \begin{itemize}
@@ -426,14 +427,15 @@ Additional settings which may come in handy:
     \item disable ``Windows Backup''
     \item disable ``Windows Biometric Service''
     \item disable ``Windows Connect Now''
-    \item try disabling ``Superfetch'' to gain better disk performance
+    \item try disabling ``Superfetch'' to gain better disk performance on some
+        disks
 \end{itemize}
 
 \section{Additional Software}
 \label{sec:software}
 
-Of course you can install the software you need the way you want to. But there
-are 2 ways I recommend for installing basic components.
+Of course you can install software the way you want to, but there are 2 ways I
+recommend for installing basic components.
 
 \begin{itemize}
     \item Ninte\footnotemark
@@ -463,7 +465,7 @@ Activate Windows 7 now using your favorite method.
 \section{VirtualBox Guest Additions}
 \label{sec:guest_additions}
 
-Do not forget to install guest additions if you are using a virtual machine.
+Do not forget to install guest additions if you are using VirtualBox.
 
 \section{Maintenance}
 \label{sec:maintenance}
@@ -478,9 +480,9 @@ WinDirStats shows you a layout of all files located on a disk sorted by
 filesize. One could also install CCleaner to keep application data and registry
 clean.
 
-\textit{I do not recommend installation updates automatically, do this manually
-whenever time allows. Include optional updates but always be aware that Windows
-Updates may include stuff you do not want, like Bing Desktop, Skype,
-Silverlight, \ldots}
+\textit{I do not recommend automatic installation of windows updates, do this
+manually whenever time allows. Include optional updates but always check
+whether the updates include stuff you do not want, again, like components
+related to Bing, Skype, Silverglith, \ldots}
 
 \end{document}
