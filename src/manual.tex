@@ -365,6 +365,8 @@ performance.
 \subsection{Disable UAC}
 \label{sub:disable_uac}
 
+Also take a look at \cref{sec:execution_as_administrator}.
+
 \begin{enumerate}
     \item \menu{Control Panel > User Accounts > Change User Account Control
         settings}
@@ -430,6 +432,31 @@ Additional settings which may come in handy:
     \item try disabling ``Superfetch'' to gain better disk performance on some
         disks
 \end{itemize}
+
+\section{Execution as Administrator}
+\label{sec:execution_as_administrator}
+
+This is merely a side note if you want to have a little bit more security. Your
+local user is already a member of the administrator group since you used it for
+the setup process. Therefore this user is able to install software and alter
+system preferences. UAC usually guards this, requiring you to click an
+additional button granting a process administrative privileges which would
+otherwise be blocked by the UAC.
+
+Since this manual is focused on the advanced (power) user, I assume you know
+what you are doing and do not require this additional click to save you. But
+there is also an alternative setup which is similar to Unix-like operating
+systems.
+
+Instead of disabling UAC, launch computer management (``compmgmt.msc''),
+activate the user account ``Administrator'' and set a password for this user.
+Next remove your user from the administrators group and add it to the users
+group. Reboot afterwards.
+
+Now your user runs witch sub-administrative privileges can safely fool around
+without damaging the entire system. Using the ``Run as Administrator'' entry
+from the context menus will invoke UAC to start something under the user
+administrator. It will prompt you for the administrator password.
 
 \section{Additional Software}
 \label{sec:software}
