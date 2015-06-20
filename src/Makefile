@@ -1,6 +1,5 @@
-TEX       = pdflatex
+TEX       = xelatex
 TEXFLAGS  = -shell-escape -file-line-error -halt-on-error
-TEXMFHOME ="./texmf"
 BIB       = bibtex
 BIBFLAGS  = -terse
 OUT       = manual.pdf
@@ -14,8 +13,8 @@ clean:
 		*.toc *.thm *.pyg
 
 %.pdf: %.tex
-	TEXMFHOME=$(TEXMFHOME) $(TEX) $(TEXFLAGS) $<
-	TEXMFHOME=$(TEXMFHOME) $(TEX) $(TEXFLAGS) $<
+	$(TEX) $(TEXFLAGS) $<
+	$(TEX) $(TEXFLAGS) $<
 
 %.bbl %.blg: %.bib %.aux
 	$(BIB) $(BIBFLAGS) $*
